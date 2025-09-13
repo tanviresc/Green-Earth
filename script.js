@@ -41,9 +41,77 @@ const displayAllPlants = (plants) => {
     const btn = document.createElement("button");
     btn.className = "btn bg-green-600 w-full";
     btn.innerText = "Add to Cart";
+    btn.addEventListener("click", () => addCart(plant));
     cardParent.append(img, title, desc, infoDiv, btn);
     cardsContainer.appendChild(cardParent);
   });
 };
 
 loadAllPlants();
+
+const loadCategoriesBtn = () => {
+  fetch("https://openapi.programming-hero.com/api/categories")
+    .then((res) => res.json())
+    .then((data) => displayCategories(data.categories));
+};
+
+const displayCategories = (categories) => {
+  const parentNode = document.getElementById("categories_btn_box");
+  parentNode.innerHTML = "";
+
+  categories.forEach((category) => {
+    const button = document.createElement("button");
+    button.className = "hover:bg-green-600 hover:text-white px-5 py-2 rounded-xl w-full text-black m-1";
+    button.innerText = category.category_name;
+    button.addEventListener("click", () => loadCategory(category.id));
+    parentNode.appendChild(button);
+  });
+};
+
+loadCategoriesBtn();
+
+const loadCategory = (id) => {
+  const url = `https://openapi.programming-hero.com/api/category/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((singleCategory) => displayAllPlants(singleCategory.plants));
+};
+
+
+let total = 0;
+const addCart = (item) => {
+  const cartParent = document.getElementById("cart_container");
+
+  const cartElement = document.createElement("div");
+  cartElement.className = "bg-[#F0FDF4] px-2 py-3 rounded-lg flex justify-between items-center my-2";
+
+  const infoDiv = document.createElement("div");
+  const name = document.createElement("h2");
+  name.className = "font-bold text-xl";
+  name.innerText = item.name;
+
+  const priceTag = document.createElement("p");
+  priceTag.className = "text-gray-400";
+  priceTag.innerText = `৳ ${item.price}`;
+
+  infoDiv.append(name, priceTag);
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "remove-btn text-red-500 text-xl";
+  removeBtn.innerHTML = `<i class="fa-solid fa-circle-xmark"></i>`;
+
+  removeBtn.addEventListener("click", () => {
+    cartParent.removeChild(cartElement);
+    total -= item.price;
+    updateTotal();
+  });
+  cartElement.append(infoDiv, removeBtn);
+  cartParent.appendChild(cartElement);
+  total += item.price;
+  updateTotal();
+};
+
+const updateTotal = () => {
+  const cartParent = document.getElementById("total-container");
+  cartParent.innerHTML = `<h2 class="text-xl font-semibold">৳ ${total}</h2>`;
+};
