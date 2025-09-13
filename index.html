@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Green Earth | Home</title>
-    
+
     <!-- favicon link  -->
     <link
       rel="shortcut icon"
@@ -63,7 +63,8 @@
           </svg>
         </div>
         <div
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black" tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black"
+          tabindex="0"
         >
           <a class="hover:bg-[#facc15]">Home</a>
           <a class="hover:bg-[#facc15]">Gallery</a>
@@ -103,7 +104,8 @@
             Plant a Tree, Grow a Future
           </h1>
           <p class="text-[#1F2937]">
-            Join our mission to plant 1 million trees and make the Earth greener for future generations.
+            Join our mission to plant 1 million trees and make the Earth greener
+            for future generations.
           </p>
           <button
             class="btn btn-warning lg:px-4 px-3 lg:py-2 py-1 rounded-2xl text-green-700"
@@ -121,21 +123,34 @@
       </div>
     </section>
 
-    <!-- categories, card and cart -->
-    <section class="mt-10">
+    <!-- catagories, card and cart -->
+    <section class="mt-10 p-10">
       <h2 class="font-bold text-xl text-center mb-2">Choose Your Trees</h2>
-      <div class="grid grid-cols-12 max-w-[1224px] mx-auto gap-12 text-center">
-        <!-- categories div  -->
-        <div class="catagories col-span-2">
+      <div
+        class="grid grid-cols-12 max-w-[1224px] mx-auto gap-12 text-center lg:grid-cols-12 md:grid-cols-8"
+      >
+        <!-- catagories div  -->
+        <div class="categories col-span-2">
           <h2 class="text-2xl font-bold mb-1.5">Categories</h2>
           <div id="categories_btn_box"></div>
+        </div>
+        <!-- loading spinner  -->
+        <div
+          id="loading-spinner"
+          class="lg:col-span-7 md:col-span-4 grid gap-5 justify-center items-center lg:grid-cols-3 md:grid-cols-2 grid-cols-1 ml-26"
+        >
+          <div class="flex w-52 flex-col gap-4">
+            <div class="skeleton h-32 w-full"></div>
+            <div class="skeleton h-4 w-28"></div>
+            <div class="skeleton h-4 w-full"></div>
+            <div class="skeleton h-4 w-full"></div>
+          </div>
         </div>
         <!-- plant cards  -->
         <div
           id="card_container"
           class="details_card_container col-span-7 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-26"
-        >
-        </div>
+        ></div>
         <!-- added cart and total  -->
         <div class="cart_items bg-white col-span-3 p-5">
           <h2 class="font-bold text-xl">Your Cart</h2>
@@ -148,13 +163,14 @@
       </div>
 
       <!-- Open the modal using ID.showModal() method -->
-      <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <dialog
+        id="trees_detail_modal"
+        class="modal modal-bottom sm:modal-middle"
+      >
         <div class="modal-box">
-          <h3 class="text-lg font-bold">Under Construction!</h3>
-          <p class="py-4">Take a chill pill and wait untill I complete my tasks</p>
+          <div id="details-modal"></div>
           <div class="modal-action">
             <form method="dialog">
-              <!-- if there is a button in form, it will close the modal -->
               <button class="btn">Close</button>
             </form>
           </div>
@@ -237,12 +253,11 @@
     </section>
 
     <footer class="bg-[#14532D] p-3">
-      <p class=" text-white text-center">
+      <p class="text-white text-center">
         © 2025 Green Earth. All Rights Reserved.
       </p>
     </footer>
 
     <script src="script.js"></script>
-
   </body>
 </html>
