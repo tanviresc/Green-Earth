@@ -124,20 +124,19 @@
     </section>
 
     <!-- catagories, card and cart -->
-    <section class="mt-10 p-10">
-      <h2 class="font-bold text-xl text-center mb-2">Choose Your Trees</h2>
+    <section class="mt-10 md:p-10 md:flex md:flex-col md:justify-center md:text-center">
+      <h2 class="md:font-medium md:text-xl lg:text-center text-center mb-5 text-4xl font-bold">Choose Your Trees</h2>
       <div
-        class="grid grid-cols-12 max-w-[1224px] mx-auto gap-12 text-center lg:grid-cols-12 md:grid-cols-8"
+        class="grid lg:grid-cols-12 md:grid-cols-8 max-w-[1224px] mx-auto gap-5 text-center"
       >
         <!-- catagories div  -->
-        <div class="categories col-span-2">
-          <h2 class="text-2xl font-bold mb-1.5">Categories</h2>
+        <div class="categories md:col-span-2">
+          <h2 class="text-2xl font-bold mb-1.5">Catagories</h2>
           <div id="categories_btn_box"></div>
         </div>
         <!-- loading spinner  -->
         <div
-          id="loading-spinner"
-          class="lg:col-span-7 md:col-span-4 grid gap-5 justify-center items-center lg:grid-cols-3 md:grid-cols-2 grid-cols-1 ml-26"
+          id="loading-spinner" class="lg:col-span-7 md:col-span-4 gap-5 justify-center items-center"
         >
           <div class="flex w-52 flex-col gap-4">
             <div class="skeleton h-32 w-full"></div>
@@ -147,12 +146,10 @@
           </div>
         </div>
         <!-- plant cards  -->
-        <div
-          id="card_container"
-          class="details_card_container col-span-7 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-26"
+        <div id="card_container" class="details_card_container lg:col-span-7 md:col-span-4 grid gap-5 lg:grid-cols-3 md:grid-cols-1"
         ></div>
         <!-- added cart and total  -->
-        <div class="cart_items bg-white col-span-3 p-5">
+        <div class="cart_items bg-white lg:col-span-3 md:col-span-2 p-5 rounded-xl">
           <h2 class="font-bold text-xl">Your Cart</h2>
           <div id="cart_container"></div>
           <div class="flex justify-between mt-3">
@@ -252,7 +249,7 @@
       </div>
     </section>
 
-    <footer class="bg-[#14532D] p-3">
+    <footer class="bg-[#14532D] p-5">
       <p class="text-white text-center">
         © 2025 Green Earth. All Rights Reserved.
       </p>
